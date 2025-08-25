@@ -2,7 +2,7 @@ from django.db import migrations
 from wagtail.models import Locale
 from aratinga.admin.models import Theme
 
-from django.conf import settings
+from aratinga.admin.settings import ThemeSettings
 from aratinga.admin.thread import set_theme
 
 def initial_data(apps, schema_editor):
@@ -49,13 +49,13 @@ def initial_data(apps, schema_editor):
 
     # Obter o tema ativo para o site
     try:
-        theme_settings = settings.ThemeSettings.for_site(site)
+        theme_settings = ThemeSettings.for_site(site)
         theme_settings.theme = theme
 
         if theme is not None:
             set_theme(theme)
         
-    except settings.ThemeSettings.DoesNotExist:
+    except ThemeSettings.DoesNotExist:
         pass
 
 

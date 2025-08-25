@@ -1,6 +1,9 @@
 from django.db import migrations
 from wagtail.models import Locale
+from aratinga.admin.models import Theme
 
+from django.conf import settings
+from aratinga.admin.thread import set_theme
 
 def initial_data(apps, schema_editor):
     ContentType = apps.get_model('contenttypes.ContentType')
@@ -31,12 +34,30 @@ def initial_data(apps, schema_editor):
     )
 
     # Create a new default site
-    Site.objects.create(
+    site = Site.objects.create(
         hostname='localhost',
         site_name='localhost',
         root_page_id=homepage.id,
         is_default_site=True
     )
+
+    theme = Theme.objects.create(
+        name='Bootstrap5',
+        description='',
+        theme_path='themes/bootstrap5'
+    )
+
+    # Obter o tema ativo para o site
+    try:
+        theme_settings = settings.ThemeSettings.for_site(site)
+        theme_settings.theme = theme
+
+        if theme is not None:
+            set_theme(theme)
+        
+    except settings.ThemeSettings.DoesNotExist:
+        pass
+
 
 
 class Migration(migrations.Migration):

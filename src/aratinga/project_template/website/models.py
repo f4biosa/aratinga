@@ -60,7 +60,7 @@ class WebPage(AratingaWebPage):
     def get_context(self, request):
         context = super(WebPage, self).get_context(request)
         # featured = ArticlePage.objects.filter(featured=True).order_by('-date_published').first()
-        last_pages = AratingaPage.objects.all().order_by('-date_published')
+        last_pages = AratingaPage.objects.all()
 
         #if featured_article:
         #    last_news = last_news.exclude(id = featured_article.pk)

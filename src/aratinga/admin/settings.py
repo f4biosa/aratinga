@@ -49,7 +49,7 @@ class ThemeSettings(BaseSetting):
         auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
     )
 
-    theme = models.ForeignKey( Theme,
+    theme = models.ForeignKey(Theme,
         null=True,
         blank=True,
         editable=True,

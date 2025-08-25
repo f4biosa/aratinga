@@ -1,12 +1,15 @@
 from django.db import migrations
 from wagtail.models import Locale
-
+from aratinga.admin.thread import set_theme
 
 def initial_data(apps, schema_editor):
     ContentType = apps.get_model('contenttypes.ContentType')
     Page = apps.get_model('wagtailcore.Page')
     Site = apps.get_model('wagtailcore.Site')
     WebPage = apps.get_model('website.WebPage')
+
+    Theme = apps.get_model('aratingaadmin', 'Theme')
+    ThemeSettings = apps.get_model('aratingaadmin', 'ThemeSettings')
 
     # Create page content type
     webpage_content_type, created = ContentType.objects.get_or_create(
@@ -31,12 +34,26 @@ def initial_data(apps, schema_editor):
     )
 
     # Create a new default site
-    Site.objects.create(
+    site = Site.objects.create(
         hostname='localhost',
         site_name='localhost',
         root_page_id=homepage.id,
         is_default_site=True
     )
+
+    theme = Theme.objects.create(
+        name='Bootstrap5',
+        description='',
+        theme_path='themes/bootstrap5'
+    )
+
+    ts, created = ThemeSettings.objects.get_or_create(
+        site_id=site.id,
+        defaults={'theme_id': theme.id},
+    )
+    if not created:
+        ts.theme_id = theme.id
+        ts.save()
 
 
 class Migration(migrations.Migration):

@@ -6,7 +6,7 @@ class ColorPickerWidget(forms.TextInput):
 
 
 class ClassifierSelectWidget(forms.CheckboxSelectMultiple):
-    template_name = "aratinga/widgets/checkbox_classifiers.html"
+    template_name = "widgets/checkbox_classifiers.html"
 
     def optgroups(self, name, value, attrs=None):
 

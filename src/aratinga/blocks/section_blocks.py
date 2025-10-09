@@ -22,7 +22,7 @@ class HeroBlock(StructBlock):
 
     class Meta:
         icon = "image"
-        template = "aratinga/section/hero_block.html"
+        template = "section/hero_block.html"
         preview_value = {"attribution": "The Wagtail Bakery"}
         description = _("An image with optional caption and attribution")
 
@@ -36,7 +36,7 @@ class PromoBlock(StructBlock):
 
     class Meta:
         icon = "image"
-        template = "aratinga/section/promo_block.html"
+        template = "section/promo_block.html"
         preview_value = {"attribution": "The Wagtail Bakery"}
         description = "An image with optional caption and attribution"
 
@@ -69,6 +69,6 @@ class FeaturedSectionBlock(StructBlock):
 
     class Meta:
         icon = "image"
-        template = "aratinga/section/featured_section_block.html"
+        template = "section/featured_section_block.html"
         preview_value = {"attribution": "The Wagtail Bakery"}
         description = _("An image with optional caption and attribution")

@@ -31,7 +31,7 @@ class ButtonBlock(ButtonMixin, BaseLinkBlock):
     """
 
     class Meta:
-        template = "aratinga/blocks/button_block.html"
+        template = "blocks/button_block.html"
         label = _("Button Link")
         value_class = LinkStructValue
 
@@ -47,7 +47,7 @@ class DownloadBlock(ButtonMixin, BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/download_block.html"
+        template = "blocks/download_block.html"
         icon = "download"
         label = _("Download")
 
@@ -88,7 +88,7 @@ class EmbedGoogleMapBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/google_map.html"
+        template = "blocks/google_map.html"
         label = _("Google Map")
 
 
@@ -106,7 +106,7 @@ class EmbedVideoBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/embed_video_block.html"
+        template = "blocks/embed_video_block.html"
         icon = "media"
         label = _("Embed Media")
 
@@ -121,7 +121,7 @@ class ImageBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/image_block.html"
+        template = "blocks/image_block.html"
         icon = "image"
         label = _("Image")
 
@@ -141,7 +141,7 @@ class ImageLinkBlock(BaseLinkBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/image_link_block.html"
+        template = "blocks/image_link_block.html"
         icon = "image"
         label = _("Image Link")
         value_class = LinkStructValue
@@ -177,7 +177,7 @@ class PageListBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/pagelist_block.html"
+        template = "blocks/pagelist_block.html"
         icon = "list-ul"
         label = _("Latest Pages")
 
@@ -226,7 +226,7 @@ class PagePreviewBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/pagepreview_block.html"
+        template = "blocks/pagepreview_block.html"
         icon = "doc-empty-inverse"
         label = _("Page Preview")
 
@@ -248,7 +248,7 @@ class QuoteBlock(BaseBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/quote_block.html"
+        template = "blocks/quote_block.html"
         icon = "openquote"
         label = _("Quote")
 
@@ -256,13 +256,13 @@ class QuoteBlock(BaseBlock):
 
 class RichTextBlock(blocks.RichTextBlock):
     class Meta:
-        template = "aratinga/blocks/rich_text_block.html"
+        template = "blocks/rich_text_block.html"
 
 
 class TableBlock(BaseBlock):
     table = WagtailTableBlock()
 
     class Meta:
-        template = "aratinga/blocks/table_block.html"
+        template = "blocks/table_block.html"
         icon = "table"
         label = "Table"

@@ -100,7 +100,7 @@ def search(request):
     # Render template
     return render(
         request,
-        "aratinga/pages/search.html",
+        "pages/search.html",
         {
             "request": request,
             "pagetypes": pagetypes,

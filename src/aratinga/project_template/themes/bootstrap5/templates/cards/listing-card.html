@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+<div id="feature-{{ block.id }}">
+    {% if block.image %}
+        {% image block.image scale-100 loading="lazy" class="card-img-top rounded-corners" %}
+    {% endif %}
+    <h3 class="fs-2">{{ block.title }}</h3>
+    <p>{{ block.caption }}</p>
+    <a href="{{ block.url }}" class="icon-link d-inline-flex align-items-center">Leia mais...</a>
+    {% include "includes/chevron-icon.html" with block=child %}
+</div>

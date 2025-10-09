@@ -92,6 +92,9 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
         help_text=_("Child pages will then be sorted by this attribute."),
     )
 
+    def children(self):
+        return self.get_children().specific().live().order_by("-first_published_at")
+
     ###############
     # Layout fields
     ###############
@@ -183,7 +186,7 @@ class AratingaWebPage(AratingaPage):
         verbose_name = _("Aratinga Web Page")
         abstract = True
 
-    template = "aratinga/pages/web_page.html"
+    template = "pages/web_page.html"
 
     # Child pages should override based on what blocks they want in the body.
     # Default is LAYOUT_STREAMBLOCKS which is the fullest editor experience.
@@ -319,9 +322,6 @@ class AratingaArticleIndexPage(AratingaPage):
         default=True,
         verbose_name=_("Show preview text"),
     )
-
-    def children(self):
-        return self.get_children().specific().live().order_by("-first_published_at")
 
 
 

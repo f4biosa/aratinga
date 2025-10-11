@@ -1,0 +1,26 @@
+name: Release to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write   # necessário para OIDC (Trusted Publisher)
+      contents: read
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Build do pacote
+        run: uv build
+
+      - name: Publicar no PyPI (Trusted Publisher)
+        run: uv publish

@@ -1,0 +1,20 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+<div class="text-bg-dark">
+    <div class="container">
+        <div class="p-4 p-md-5 mb-4 rounded">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 fst-italic">{{ self.title }}</h1>
+                <p class="lead my-3">{{ self.text }}</p>
+                <p class="lead mb-0">
+                    {% if self.cta_link %}
+                        <a href="{{ self.cta_link }}" class="hero-cta-link">
+                            {{ self.cta }}
+                        </a>
+                    {% else %}
+                        {{ self.cta }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

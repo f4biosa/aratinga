@@ -111,41 +111,41 @@ class _DefaultSettings:
     CMS_FRONTEND_TEMPLATES_BLOCKS = {
         "cardblock": [
             (
-                "aratinga/blocks/card_block.html",
+                "blocks/card_block.html",
                 _("Card"),
             ),
             (
-                "aratinga/blocks/card_head.html",
+                "blocks/card_head.html",
                 _("Card with header"),
             ),
             (
-                "aratinga/blocks/card_foot.html",
+                "blocks/card_foot.html",
                 _("Card with footer"),
             ),
             (
-                "aratinga/blocks/card_head_foot.html",
+                "blocks/card_head_foot.html",
                 _("Card with header and footer"),
             ),
             (
-                "aratinga/blocks/card_blurb.html",
+                "blocks/card_blurb.html",
                 _("Blurb - rounded image and no border"),
             ),
             (
-                "aratinga/blocks/card_img.html",
+                "blocks/card_img.html",
                 _("Cover image - use image as background"),
             ),
         ],
         "cardgridblock": [
             (
-                "aratinga/blocks/cardgrid_group.html",
+                "blocks/cardgrid_group.html",
                 _("Card group - attached cards of equal size"),
             ),
             (
-                "aratinga/blocks/cardgrid_deck.html",
+                "blocks/cardgrid_deck.html",
                 _("Card deck - separate cards of equal size"),
             ),
             (
-                "aratinga/blocks/cardgrid_columns.html",
+                "blocks/cardgrid_columns.html",
                 _("Card masonry - fluid brick pattern"),
             ),
         ],
@@ -163,19 +163,19 @@ class _DefaultSettings:
                 _("Default"),
             ),
             (
-                "aratinga/pages/web_page.html",
+                "pages/web_page.html",
                 _("Web page showing title and cover image"),
             ),
             (
-                "aratinga/pages/web_page_notitle.html",
+                "pages/web_page_notitle.html",
                 _("Web page without title and cover image"),
             ),
             (
-                "aratinga/pages/home_page.html",
+                "pages/home_page.html",
                 _("Home page without title and cover image"),
             ),
             (
-                "aratinga/pages/base.html",
+                "pages/base.html",
                 _("Blank page - no navbar or footer"),
             ),
         ],

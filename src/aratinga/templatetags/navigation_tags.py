@@ -31,7 +31,7 @@ def is_active(page, current_page):
 
 
 # Retrieves the top menu items - the immediate children of the parent page
-@register.inclusion_tag("aratinga/tags/top_menu.html", takes_context=True)
+@register.inclusion_tag("tags/top_menu.html", takes_context=True)
 def top_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().live().in_menu()
     for menuitem in menuitems:
@@ -91,7 +91,7 @@ def top_menu_children(context, parent, calling_page=None):
     }
 
 
-@register.inclusion_tag("aratinga/tags/breadcrumbs.html", takes_context=True)
+@register.inclusion_tag("tags/breadcrumbs.html", takes_context=True)
 def breadcrumbs(context):
     self = context.get("self")
     if self is None or self.depth <= 2:

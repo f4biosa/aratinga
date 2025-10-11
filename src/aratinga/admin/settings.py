@@ -27,7 +27,7 @@ ARATINGA_THEME_PATH = 'themes'
 class ThemeManagementPanel(Panel):
     def render(self):
         # Render a custom template that includes both activation and installation forms
-        return render(self.request, 'aratinga/theme_management.html', {
+        return render(self.request, 'theme_management.html', {
             'themes': Theme.objects.all(),  # List of available themes
             'current_theme': self.instance.theme,  # Currently active theme
         })

@@ -9,8 +9,8 @@ authors = [
     {name = "Roraimae", email = "fabio@voreios.com.br"}
 ]
 dependencies = [
-    "Django>=4.2,<6.0",
-    "wagtail>=6.0,<7.0",
+    "Django>=5.2,<5.3",
+    "wagtail>=7.1,<7.2",
 ]
 
 [project.scripts]

@@ -29,7 +29,7 @@ class ColumnBlock(BaseLayoutBlock):
 
 
     class Meta:
-        template = "aratinga/blocks/column_block.html"
+        template = "blocks/column_block.html"
         icon = "placeholder"
         label = "Column"
 
@@ -45,7 +45,7 @@ class GridBlock(BaseLayoutBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/grid_block.html"
+        template = "blocks/grid_block.html"
         icon = "ara-columns"
         label = _("Responsive Grid Row")
 
@@ -64,7 +64,7 @@ class CardGridBlock(BaseLayoutBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/cardgrid_deck.html"
+        template = "blocks/cardgrid_deck.html"
         icon = "ara-th-large"
         label = _("Card Grid")
 
@@ -106,6 +106,6 @@ class HeroBlock(BaseLayoutBlock):
     )
 
     class Meta:
-        template = "aratinga/blocks/hero_block.html"
+        template = "blocks/hero_block.html"
         icon = "ara-newspaper-o"
         label = "Hero Unit"

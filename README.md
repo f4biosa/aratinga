@@ -12,15 +12,28 @@ Aratinga é um sistema de gerenciamento de Conteúdo para internet (_Content Man
 
 Uma alternativa profissional para criação e marketing de websites com Wagtail.
 
-
+### Execute:
+``` CLI
 aratinga start mysite
+```
+### Mensagens:
 
-Creating a Aratinga project called mysite
-Success! mysite has been created
+###### Creating a Aratinga project called mysite
 
-        Next steps:
-            1. cd mysite/
-            2. python manage.py migrate
-            3. python manage.py createsuperuser
-            4. python manage.py runserver
-            5. Go to http://localhost:8000/admin/ and start editing!
+###### Success! mysite has been created
+
+### Próximos passos:
+``` CLI
+cd mysite/
+```
+``` CLI
+python manage.py migrate
+```
+``` CLI
+python manage.py createsuperuser
+```
+``` CLI
+python manage.py runserver
+```
+
+### Vá para: 'http://localhost:8000/admin/' e comece a editar!

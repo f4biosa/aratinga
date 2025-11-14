@@ -1,0 +1,25 @@
+{% load govbrds_tags wagtailcore_tags %}
+
+{% for child in menuitems_children %}
+    {% if child.show_dropdown %}
+        <li class="site-menu 
+            {{ child.title|lower|cut:'' }}
+            {% if child.active %} active{% endif %}
+            {% if child.show_dropdown %} drop-menu{% endif %}">
+                <a href="javascript: void(0)" class="menu-item">
+                    <span class="content">{{ child.title }}</span></a>
+                {% top_menu_children parent=child %}
+                {# Used to display child menu items #}
+        </li>
+    
+    {% else %}
+    <li>
+        <a class="menu-item" href="{% pageurl child %}">
+            <!--<span class="icon">
+                <i class="fas fa-bell" aria-hidden="true"></i>
+            </span>-->
+            <span class="content">{{ child.title }}</span>
+        </a>
+    </li>
+    {% endif %}
+{% endfor %}

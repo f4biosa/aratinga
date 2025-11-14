@@ -1,0 +1,31 @@
+ <!-- Paginação -->
+<div>
+    <nav class="br-pagination center" aria-label="Paginação de resultados" data-total="4" data-current="1">
+        <ul>
+            {% if pages.has_previous %}
+                <li>
+                    <a href="?page={{ pages.previous_page_number }}"
+                       class="br-button circle"
+                       data-previous-page="data-previous-page"
+                       aria-label="Página anterior">
+                        <i class="fas fa-angle-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% for page_num in pages.paginator.page_range %}
+                <li><a class="page {% if page_num == pages.number %}active{% endif %}"
+                       href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endfor %}
+            {% if posts.has_next %}
+                <li>
+                    <a href="?page={{ pages.next_page_number }}"
+                       class="br-button circle"
+                       data-next-page="data-next-page"
+                       aria-label="Página seguinte">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

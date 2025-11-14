@@ -1,0 +1,29 @@
+{% load govbrds_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+{% for menuitem in menuitems %}
+    <div class="col-sm d-flex" style="min-width: 20%">
+        {% if menuitem.show_dropdown %}
+            <div class="menu-folder 
+                {{ menuitem.title|lower|cut:" " }}
+                {% if menuitem.active %} active{% endif %}
+                {% if menuitem.show_dropdown %} drop-menu{% endif %}">
+
+                    <a href="{% pageurl menuitem %}" class="menu-item">
+                        <span class="content">{{ menuitem.title }}</span></a>
+                    {% top_menu_children parent=menuitem %}
+                    {# Used to display child menu items #}
+                </ul>
+            </div>
+        {% else %}
+
+                <a class="menu-item" href="{% pageurl menuitem %}">
+                    <!--<span class="icon">
+                        <i class="fas fa-bell" aria-hidden="true"></i>
+                    </span>-->
+                    <span class="content">{{ menuitem.title }}</span>
+                </a>
+
+        {% endif %}
+    </div>
+{% endfor %}

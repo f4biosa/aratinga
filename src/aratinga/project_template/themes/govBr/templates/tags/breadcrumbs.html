@@ -1,0 +1,25 @@
+{% load wagtailcore_tags %}
+
+{% if ancestors %}
+<div class="br-breadcrumb breadcrumb-container" aria-label="Breadcrumb">
+    <ul class="crumb-list">
+    {% for ancestor in ancestors %}
+        {% if forloop.last %}
+            <li class="crumb" aria-current="page"><i class="icon fas fa-chevron-right"></i>{{ ancestor }}</li>
+        {% elif forloop.first %}
+            <li class="crumb">
+                <a class="br-button circle" href="{% pageurl ancestor %}">
+                <span class="sr-only">Página inicial</span>
+                <i class="fas fa-home"></i>
+                </a>
+            </li>
+        {% else %}
+            <li class="crumb" aria-current="page"><i class="icon fas fa-chevron-right"></i>
+                <a href="{{ ancestor.url }}">{{ ancestor }}</a>
+            </li>
+        {% endif %}
+                
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

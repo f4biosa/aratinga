@@ -1,0 +1,35 @@
+{% load wagtailcore_tags govbrds_navigation_tags wagtailimages_tags %}
+
+<a href="{% pageurl article %}">
+    <div class="article-card">
+        <div class="row">
+
+            {% if article.image %}
+                <div class="col-md-5">
+                        {% image article.image fill-500x200 loading="lazy" %}
+                </div>
+            {% endif %}
+            <div class="col-md-7">
+                <h4 style="margin-top: 15px">{{ article.title }}</h4>
+                <p class="text-gray-60">
+                    {% if article.date_published %}
+                        {{ article.date_published }} por
+                    {% endif %}
+                    {% for author in article.authors %}
+                        {{ author }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                {% if article.introduction %}
+                    <p>{{ article.introduction|truncatewords:15 }}</p>
+                {% endif %}
+                
+            </div>
+
+        </div>
+    </div>
+</a>
+
+
+
+
+

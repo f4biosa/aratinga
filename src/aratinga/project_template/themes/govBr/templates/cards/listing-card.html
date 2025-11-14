@@ -1,0 +1,19 @@
+{% load wagtailimages_tags %}
+
+<div class="br-card" id="card-{{ block.id }}">
+    <div class="card-header">
+        {% if block.image %}
+            {% image block.image scale-100 loading="lazy" class="card-img-top rounded-corners" %}
+        {% endif %}
+
+        <div class="card-title text-weight-semi-bold">
+            <a href="{{ block.url }}"><h3>{{ block.title }}</h3></a>
+        </div>
+    </div>
+    <div class="card-text card-content">
+        <p>{{ block.caption }}</p>
+        <a href="{{ block.url }}" class="br-button" type="button">Leia mais...</a>
+    </div>
+</div>
+    
+

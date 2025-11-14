@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load govbrds_navigation_tags wagtailimages_tags static %}
+
+{% block content %}
+
+    {% include "includes/headers/header-article.html" %}
+
+    <div class="container"> <!-- wrapper -->
+        <div class="row">
+            <article vocab="http://schema.org/" typeof="Article" prefix="rnews: http://iptc.org/std/rNews/2011-10-07#">
+                <div class="col-md-12"> <!-- column -->
+                    <div id="content-body">
+                        {{ page.body }}
+                    </div>
+                </div>
+            </article>
+            {% if page.get_tags %}
+                        <p class="article__tag-introduction">Encontre outras notícias com tags semelhantes</p>
+                        <div class="article-tags article-tags--condensed">
+                            <span class="u-sr-only">Filtre notícias com a tag</span>
+                            {% for tag in page.get_tags %}
+                                <a href="{{ tag.url }}" class="article-tags__pill">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                {% endif %}
+                {% if page.get_locations %}
+                    <div class="article__locations">
+                        <span class="u-sr-only">Filtre notícias da unidade </span>
+                        {% for unit in page.locations %}
+                            <a href="{{ unit.url }}" class="article-tags__pill">{{ unit }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+    <script src="{% static "js/jquery-3.7.1.min.js"  %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#content-body img').each(function() {
+                var altText = $(this).attr('alt');
+                if (altText) {
+                    if ($(this).hasClass('right')) {
+                        $(this).wrap('<div class="br-card right"></div>');
+                    } else if ($(this).hasClass('left')) {
+                        $(this).wrap('<div class="br-card left"></div>');
+                    } else  if ($(this).hasClass('full-width')) {
+                        $(this).wrap('<div class="br-card full-width"></div>');
+                    } else {
+                        $(this).wrap('<div class="br-card"></div>');
+                    }
+                    $(this).wrap('<div class="card-header"></div>');
+                    $(this).wrap('<figure></figure>');
+                    $(this).after('<figcaption>' + altText + '</figcaption>');
+                }
+            });
+        });
+    </script>
+{% endblock content %}

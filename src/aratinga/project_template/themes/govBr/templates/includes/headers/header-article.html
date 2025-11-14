@@ -1,0 +1,45 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="p-3">
+                <a class="br-button" href="/search/?query={{ page.editorial }}">{{ page.editorial }}</a>
+            </div>
+            <h1 class="index-header__title index-header__title--blog">{{ page.title }}</h1>
+            <div>
+                {% if page.date_published %}
+                    <div style="padding: 8px 16px ;">
+                        Publicado em {{ page.date_published }}</div>
+                {% endif %}
+                {% if page.authors %}
+                    <div class="br-list" role="list">
+                      <div class="header">
+                        <div class="title">Autoria</div>
+                      </div>
+                        <span class="br-divider"></span>
+                        {% for author in page.authors %}
+                            {% include "articles/article_authors.html" %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            {% if page.caption %}
+                <p class="text-up-01 text-sm-up-02 text-weight-regular mb-5 mt-5">{{ page.caption }}</p>
+            {% endif %}
+
+            {% if page.image %}
+                <div class="br-card">
+                    <div class="card-content">
+                        <figure>
+                            {% image page.image width-640 as image %}
+                            <img src="{{ image.url }}" alt="{{ page.image.title }}" class="center" />
+                            <figcaption>{{  page.image.title }}</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>

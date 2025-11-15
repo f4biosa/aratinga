@@ -1,0 +1,23 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+
+    <h1 property="name" class="index-header__title index-header__title--blog">{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+        <p property="description">{{ page.subtitle }}</p>
+    {% endif %}
+
+    {% if page.date_published %}
+        <div class="blog__published">
+            {{ page.date_published }}
+        </div>
+    {% endif %}
+    {% if page.introduction %}
+        <p class="index-header__introduction index-header__introduction--blog">{{ page.introduction }}</p>
+    {% endif %}
+
+    {% if page.image %}
+        {% image page.image original as image %}
+        <p><img src="{{ image.url }}" class="richtext-image scale-80" /></p>
+    {% endif %}

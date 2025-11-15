@@ -1,0 +1,16 @@
+{
+  "name": "govbrds3",
+  "version": "3.6.2",
+  "description": "Design System do Governo Federal Brasileiro",
+  "dependencies": {
+    "@govbr-ds/core": "^3.6.2"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  },
+  "scripts": { 
+    "build-css": "sass --style=compressed static/scss/styles.scss static/css/styles.min.css", 
+    "watch-css": "sass --watch --style=compressed static/scss/styles.scss:static/css/styles.min.css",
+    "govbr-demo": "npx http-server ./node_modules/@govbr-ds/core/dist"
+  }
+}

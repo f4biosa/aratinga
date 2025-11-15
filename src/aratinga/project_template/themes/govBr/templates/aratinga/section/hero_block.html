@@ -1,0 +1,17 @@
+{% load wagtailimages_tags wagtailcore_tags %}
+<div class="row">
+	<section id="home-hero" class="bg-gradient-indigo-cool-vivid text-center text-sm-left mx-n2 mx-sm-n6 px-2 px-sm-6 py-8x px-lg-8x">
+		<div class="row align-items-center">
+			<div class="col-lg">
+				<h1 class="text-up-05 text-sm-up-06 text-weight-regular text-sm-weight-light mb-5 mt-5">{{ self.title }}</h1>
+				<p class="text-up-01 text-sm-up-02 text-weight-regular mb-5 mt-5">
+					{{ self.text }}
+				</p>
+				<div class="d-lg-none ">
+					{% picture self.image format-{avif,webp,jpeg} fill-{800x650,1920x900} sizes="100vw" class="img-fluid" alt="" %}
+				</div>
+				<a class="br-button secondary block auto-sm mb-5 mt-5" href="{{ self.cta_link.url }}">{{ self.cta }}</a>
+			</div>
+		</div>
+	</section>
+</div>

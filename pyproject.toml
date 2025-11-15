@@ -25,3 +25,11 @@ build-backend = "hatchling.build"
 
 [tool.hatch.version]
 path = "./src/aratinga/__about__.py"
+
+[dependency-groups]
+dev = [
+    "playwright>=1.56.0",
+    "pytest>=8.4.2",
+    "pytest-django>=4.11.1",
+    "pytest-playwright>=0.7.1",
+]

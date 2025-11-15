@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags govbrds_navigation_tags wagtailimages_tags %}
+
+{% if tag %}
+    {% block title %}
+        Visualização de todas as postagens de artigos classificadas pela tag {{ tag }}
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <!-- Form filter -->
+    <form class="searchfilters flex-container" action="{% pageurl page %}" method="GET" >
+        <div class="row">
+            <div class="col-lg-9">
+
+                {% if not tag %}
+                    {% include "includes/headers/header-index.html" %}
+                {% endif %}
+            
+                <div class="row col-container">
+                    <!--Title-->
+                    <div class="col-lg-8">
+                        <div class="br-input">
+                            <label for="input-title" class="sr-only">Título</label>
+                            <input name="title" id="input-title" type="search"
+                                    {% if 'title' in request.GET %}
+                                   value="{{ request.GET.title }}"
+                                    {% endif %}
+                                   placeholder="Título da notícia"/>
+                            <button class="br-button" type="button" aria-label="Buscar"><i class="fas fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <!--Location-->
+                    <div class="col-lg-2">
+                        <div class="br-select">
+                            <div class="br-input">
+                                <label for="select-simple" class="sr-only">Unidade:</label>
+                                <input id="select-simple" type="text" placeholder="Unidade"/>
+                                <button class="br-button" type="button" aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="br-list" tabindex="0">
+                            <div class="br-item" tabindex="-1">
+                                        <div class="br-radio">
+                                            <input id="Todos" value="" type="radio" />
+                                            <label for="Todos">Todos</label>
+                                        </div>
+                                
+                            </div>
+                                {% for location in page.get_locations %}
+                                    <div class="br-item" tabindex="-1">
+                                        <div class="br-radio">
+                                            <input id="{{ location.acronym }}" type="radio"
+                                                    {% if 'location' in request.GET  %}
+                                                        {% if request.GET.location == location.acronym %}
+                                                   checked="checked"
+                                                        {% endif %}
+                                                    {% endif %}
+                                                   name="location" value="{{ location.acronym }}"/>
+                                            <label for="{{ location.acronym }}">{{ location.acronym }}</label>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--Tag-->
+                    <!--Submit-->
+                    <div class="col-lg-2">
+                        <div class="br-input">
+                            <input type="submit">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="searchcounter xsmall" style="margin-bottom: 0"><strong>{{ pages.paginator.count }}</strong>
+                    {% if pages.paginator.count > 1 %}
+                        notícias encontradas.
+                    {% else %}
+                        notícia encontrada.
+                    {% endif %}
+                </p>
+                <br />
+
+                <div style="background-color: white; padding-top: 10px">
+                    {% include "components/pagination.html" %}
+                    <span class="br-divider my-3"></span>
+                    <div class="article-list">
+                        {% if pages %}
+                            {% for article in pages %}
+                                {% include "cards/article-listing-card.html" %}
+                                <span class="br-divider my-3"></span>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-md-12">
+                                <p>Nenhum artigo públicado. Deculpe.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div style="padding-bottom: 10px">
+                    {% include "components/pagination.html" %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="side-bar">
+                    <div class="br-list" role="list">
+                        <div class="header">
+                            <div class="title">Tags</div>
+                        </div>
+                        <span class="br-divider my-3"></span>
+                        {% for tag in page.get_child_tags %}
+                            <div class="br-item">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <label>
+                                            <input type="checkbox" name="tag" value="{{ tag }}"> {{ tag }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><span class="br-divider"></span>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock content %}

@@ -8,33 +8,38 @@
 
 # Aratinga - CMS
 
-Aratinga is a web Content Management System built with Python, Django, and Wagtail.
+Aratinga is a web Content Management System (CMS) built in Python / Django and Wagtail.
 
-A professional alternative for building and marketing websites with Wagtail.
+A professional alternative for creating and marketing websites with Wagtail.
 
-### Run
-``` CLI
+### Run:
+
+```cli
 aratinga start mysite
 ```
 
-### Messages
+### Messages:
 
-###### Creating an Aratinga project called mysite
+###### Creating a Aratinga project called mysite
 
-###### Success! mysite has been created
+###### Success\! mysite has been created
 
-### Next steps
-``` CLI
-cd mysite/
+### Next steps:
+
+```cli
+cd mysite
 ```
-``` CLI
+
+```cli
 python manage.py migrate
 ```
-``` CLI
+
+```cli
 python manage.py createsuperuser
 ```
-``` CLI
+
+```cli
 python manage.py runserver
 ```
 
-### Go to: 'http://localhost:8000/admin/' and start editing!
+### Go to: 'http://localhost:8000/admin/' and start editing your CMS site\!

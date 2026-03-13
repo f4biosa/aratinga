@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Wagtail
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.sitemaps",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -60,19 +61,18 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # Common functionality
+    # Security — must come first
+    "django.middleware.security.SecurityMiddleware",
+    # Session / auth
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # Security
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
     # CMS functionality
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
-    'aratinga.admin.middleware.ThemeMiddleware',
-
+    "aratinga.admin.middleware.ThemeMiddleware",
 ]
 
 ROOT_URLCONF = "{{ project_name }}.urls"

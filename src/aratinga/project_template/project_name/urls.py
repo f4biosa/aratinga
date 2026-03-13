@@ -16,7 +16,6 @@ Including another URLconf
 """
 
 from aratinga.admin import urls as cms_admin_urls
-from aratinga import search_urls as cms_search_urls
 from aratinga import urls as cms_urls
 from django.conf import settings
 

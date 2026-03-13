@@ -9,7 +9,8 @@ from wagtail import blocks
 
 from .content_blocks import (
     CardBlock,
-    CarouselBlock
+    CarouselBlock,
+    ImageGalleryBlock,
 )
 
 from .html_blocks import (
@@ -64,6 +65,7 @@ HTML_STREAMBLOCKS = [
 CONTENT_STREAMBLOCKS = HTML_STREAMBLOCKS + [
     ("card", CardBlock()),
     ("carousel", CarouselBlock()),
+    ("image_gallery", ImageGalleryBlock()),
 ]
 
 LAYOUT_STREAMBLOCKS = [

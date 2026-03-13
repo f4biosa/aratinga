@@ -2,41 +2,35 @@
 Base and abstract pages used in Aratinga.
 """
 
-
 from django.conf import settings
+from typing import cast
 
 from django.db import models
-
+from django.db.models import Field
 from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.fields import ParentalKey
-from modelcluster.fields import ParentalManyToManyField
-
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
-
-from wagtail.models import Page
-from wagtail.models import PageBase
-from wagtail.search import index
+from wagtail.admin.panels import (
+    FieldPanel,
+    MultiFieldPanel,
+    ObjectList,
+    TabbedInterface,
+)
 from wagtail.fields import StreamField
-from wagtail.admin.panels import FieldPanel
-from wagtail.admin.panels import ObjectList
-from wagtail.admin.panels import TabbedInterface
-from wagtail.admin.panels import MultiFieldPanel
+from wagtail.models import Page, PageBase, PageQuerySet
+from wagtail.search import index
 from wagtail.utils.decorators import cached_classmethod
 
-
+from aratinga.blocks import COMPONENT_STREAMBLOCKS, CONTENT_STREAMBLOCKS
+from aratinga.models.snippets_models import Template
 from aratinga.settings import cms_settings
-from aratinga.blocks import CONTENT_STREAMBLOCKS
-from aratinga.blocks import SECTION_STREAMBLOCKS
-from aratinga.blocks import COMPONENT_STREAMBLOCKS
 from aratinga.widgets import ClassifierSelectWidget
-from aratinga.models.snippets_models import ClassifierTerm, Template
-
 
 CMS_PAGE_MODELS = []
+
 
 def get_page_models():
     return CMS_PAGE_MODELS
@@ -45,17 +39,15 @@ def get_page_models():
 class AratingaPageMeta(PageBase):
     def __init__(cls, name, bases, dct):
         super().__init__(name, bases, dct)
-        if not cls._meta.abstract:
+        if not cls._meta.abstract:  # type: ignore[union-attr]
             CMS_PAGE_MODELS.append(cls)
 
 
 class AratingaTag(TaggedItemBase):
-    class Meta:
+    class Meta(TaggedItemBase.Meta):
         verbose_name = _("Aratinga Tag")
 
-    content_object = ParentalKey(
-        "aratinga.AratingaPage", related_name="tagged_items"
-    )
+    content_object = ParentalKey("aratinga.AratingaPage", related_name="tagged_items")
 
 
 class AratingaPage(Page, metaclass=AratingaPageMeta):
@@ -64,7 +56,7 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
     All pages should inherit from this.
     """
 
-    class Meta:
+    class Meta(Page.Meta):
         verbose_name = _("Aratinga Page")
 
     # Do not allow this page type to be created in wagtail admin
@@ -93,7 +85,17 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
     )
 
     def children(self):
-        return self.get_children().specific().live().order_by("-first_published_at")
+        order = self.index_order_by or "-first_published_at"
+        qs: PageQuerySet = self.get_children()  # type: ignore[assignment]
+        return qs.specific().live().order_by(order)
+
+    def get_index_children(self):
+        """
+        Returns the live child pages to be shown in index/list views,
+        ordered by ``index_order_by``.  Override in subclasses to filter
+        or annotate the queryset (e.g. to a specific page type).
+        """
+        return self.children()
 
     ###############
     # Layout fields
@@ -132,7 +134,6 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
         FieldPanel("tags"),
     ]
 
-
     def __init__(self, *args, **kwargs):
         """
         Inject custom choices and defaults into the form fields
@@ -144,14 +145,10 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
             "*", []
         ) + cms_settings.CMS_FRONTEND_TEMPLATES_PAGES.get(klassname, [])
 
-        self._meta.get_field(
-            "index_order_by"
-        ).choices = self.index_order_by_choices
-        self._meta.get_field("custom_template").choices = template_choices
-        if not self.id:
+        cast(Field, self._meta.get_field("index_order_by")).choices = self.index_order_by_choices
+        cast(Field, self._meta.get_field("custom_template")).choices = template_choices
+        if not self.pk:
             self.index_order_by = self.index_order_by_default
-    
-
 
     @cached_classmethod
     def get_edit_handler(cls):
@@ -176,13 +173,14 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
 # These are abstract so subclasses can override fields if desired.
 ###############################################################################
 
+
 class AratingaWebPage(AratingaPage):
     """
     Provides a body and body-related functionality.
     This is abstract so that subclasses can override the body StreamField.
     """
 
-    class Meta:
+    class Meta(AratingaPage.Meta):
         verbose_name = _("Aratinga Web Page")
         abstract = True
 
@@ -224,7 +222,7 @@ class AratingaArticlePage(AratingaPage):
     Article, suitable for news or blog content.
     """
 
-    class Meta:
+    class Meta(AratingaPage.Meta):
         verbose_name = _("Aratinga Article")
         abstract = True
 
@@ -246,7 +244,7 @@ class AratingaArticlePage(AratingaPage):
         blank=True,
         use_json_field=True,
     )
-    
+
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         null=True,
@@ -267,7 +265,8 @@ class AratingaArticlePage(AratingaPage):
         verbose_name=_("Display publish date"),
     )
 
-    search_fields = AratingaWebPage.search_fields + [
+    search_fields = AratingaPage.search_fields + [
+        index.SearchField("body"),
         index.SearchField("caption", boost=2),
         index.FilterField("author"),
         index.FilterField("author_display"),
@@ -294,7 +293,7 @@ class AratingaArticleIndexPage(AratingaPage):
     Shows a list of article sub-pages.
     """
 
-    class Meta:
+    class Meta(AratingaPage.Meta):
         verbose_name = _("Aratinga Article Index Page")
         abstract = True
 
@@ -324,36 +323,32 @@ class AratingaArticleIndexPage(AratingaPage):
     )
 
 
-
-
-class TemplatePage(Page):
+class TemplatePage(AratingaPage):
     """
-    Wagtail Page that supports dynamic template selection using the Template model.
+    Page whose body is rendered from a stored Template snippet.
+    Inherits classifiers, tags, and custom template selection from AratingaPage.
     """
-    template = models.ForeignKey(
+
+    snippet_template = models.ForeignKey(
         Template,
         on_delete=models.SET_NULL,
         related_name="pages",
         null=True,
         blank=True,
+        verbose_name=_("Template snippet"),
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("template"),
+        FieldPanel("snippet_template"),
     ]
 
     def get_context(self, request):
-        # Add custom context if required
         context = super().get_context(request)
-
-        # Pass Wagtail parent data and page metadata here
-        context['page_title'] = self.title
-
-        # Optionally render the custom template dynamically
-        if self.template:
-            context['custom_content'] = self.template.render(context)
+        context["page_title"] = self.title
+        if self.snippet_template:
+            context["custom_content"] = self.snippet_template.render(context)
         return context
 
-    class Meta:
-        verbose_name = "Template Page"
-        verbose_name_plural = "Template Pages"
+    class Meta(AratingaPage.Meta):
+        verbose_name = _("Template Page")
+        verbose_name_plural = _("Template Pages")

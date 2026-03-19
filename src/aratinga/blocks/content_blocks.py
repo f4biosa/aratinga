@@ -46,7 +46,7 @@ class CardBlock(BaseBlock):
     class Meta:
         icon = "image"
         label = _("Card")
-        group="Content"
+        group=_("Content")
         template = "blocks/card_foot.html"
 
 
@@ -60,7 +60,7 @@ class CarouselBlock(BaseBlock):
     class Meta:
         icon = "image"
         label = _("Carousel")
-        group="Content"
+        group=_("Content")
         template = "blocks/carousel_block.html"
 
 
@@ -79,4 +79,4 @@ class ImageGalleryBlock(BaseBlock):
         template = "blocks/image_gallery_block.html"
         icon = "image"
         label = _("Image Gallery")
-        group = "Content"
+        group = _("Content")

@@ -18,9 +18,6 @@ msgstr ""
 "X-Generator: Generated for Aratinga\n"
 
 #: src/aratinga/blocks/__init__.py:53
-msgid "HTML"
-msgstr ""
-
 #: src/aratinga/blocks/__init__.py:84
 msgid "HTML"
 msgstr ""
@@ -82,14 +79,11 @@ msgid "Google Map"
 msgstr ""
 
 #: src/aratinga/blocks/html_blocks.py:120
-msgid "Image"
-msgstr ""
-
 #: src/aratinga/blocks/html_blocks.py:126
-msgid "Image"
-msgstr ""
-
 #: src/aratinga/blocks/html_blocks.py:135
+#: src/aratinga/blocks/content_blocks.py:23
+#: src/aratinga/blocks/section_blocks.py:19
+#: src/aratinga/blocks/section_blocks.py:37
 msgid "Image"
 msgstr ""
 
@@ -161,11 +155,11 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#: src/aratinga/blocks/content_blocks.py:23
-msgid "Image"
-msgstr ""
-
 #: src/aratinga/blocks/content_blocks.py:28
+#: src/aratinga/blocks/base_blocks.py:324
+#: src/aratinga/blocks/section_blocks.py:20
+#: src/aratinga/blocks/section_blocks.py:38
+#: src/aratinga/blocks/section_blocks.py:58
 msgid "Title"
 msgstr ""
 
@@ -206,6 +200,8 @@ msgid "Column"
 msgstr ""
 
 #: src/aratinga/blocks/layout_blocks.py:44
+#: src/aratinga/blocks/layout_blocks.py:63
+#: src/aratinga/blocks/layout_blocks.py:80
 msgid "Full width"
 msgstr ""
 
@@ -213,16 +209,8 @@ msgstr ""
 msgid "Responsive Grid Row"
 msgstr ""
 
-#: src/aratinga/blocks/layout_blocks.py:63
-msgid "Full width"
-msgstr ""
-
 #: src/aratinga/blocks/layout_blocks.py:69
 msgid "Card Grid"
-msgstr ""
-
-#: src/aratinga/blocks/layout_blocks.py:80
-msgid "Full width"
 msgstr ""
 
 #: src/aratinga/blocks/layout_blocks.py:84
@@ -265,22 +253,6 @@ msgstr ""
 msgid "Other link"
 msgstr ""
 
-#: src/aratinga/blocks/base_blocks.py:324
-msgid "Title"
-msgstr ""
-
-#: src/aratinga/blocks/section_blocks.py:19
-msgid "Image"
-msgstr ""
-
-#: src/aratinga/blocks/section_blocks.py:20
-msgid "Title"
-msgstr ""
-
-#: src/aratinga/blocks/section_blocks.py:21
-msgid "Text"
-msgstr ""
-
 #: src/aratinga/blocks/section_blocks.py:22
 msgid "Call to action label"
 msgstr ""
@@ -293,14 +265,7 @@ msgstr ""
 msgid "Hero"
 msgstr ""
 
-#: src/aratinga/blocks/section_blocks.py:37
-msgid "Image"
-msgstr ""
-
-#: src/aratinga/blocks/section_blocks.py:38
-msgid "Title"
-msgstr ""
-
+#: src/aratinga/blocks/section_blocks.py:21
 #: src/aratinga/blocks/section_blocks.py:42
 msgid "Text"
 msgstr ""
@@ -313,18 +278,11 @@ msgstr ""
 msgid "Promo"
 msgstr ""
 
-#: src/aratinga/blocks/section_blocks.py:58
-msgid "Title"
-msgstr ""
-
 #: src/aratinga/blocks/section_blocks.py:61
+#: src/aratinga/blocks/section_blocks.py:69
 msgid "Featured section"
 msgstr ""
 
 #: src/aratinga/blocks/section_blocks.py:62
 msgid "Will display up to three child items."
-msgstr ""
-
-#: src/aratinga/blocks/section_blocks.py:69
-msgid "Featured section"
 msgstr ""

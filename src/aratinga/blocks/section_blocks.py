@@ -26,7 +26,7 @@ class HeroBlock(BaseBlock):
         icon = "image"
         template = "section/hero_block.html"
         label = _("Hero")
-        group="Section"
+        group=_("Section")
 
 
 class PromoBlock(BaseBlock):
@@ -46,7 +46,7 @@ class PromoBlock(BaseBlock):
         icon = "image"
         template = "section/promo_block.html"
         label = _("Promo")
-        group="Section"
+        group=_("Section")
 
 
 class FeaturedSectionBlock(BaseBlock):
@@ -66,4 +66,4 @@ class FeaturedSectionBlock(BaseBlock):
         icon = "image"
         template = "section/featured_section_block.html"
         label = _("Featured section")
-        group="Section"
+        group=_("Section")

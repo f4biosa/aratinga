@@ -141,12 +141,8 @@ class AratingaPage(Page, metaclass=AratingaPageMeta):
         """
         super().__init__(*args, **kwargs)
         klassname = self.__class__.__name__.lower()
-        template_choices = cms_settings.CMS_FRONTEND_TEMPLATES_PAGES.get(
-            "*", []
-        ) + cms_settings.CMS_FRONTEND_TEMPLATES_PAGES.get(klassname, [])
 
         cast(Field, self._meta.get_field("index_order_by")).choices = self.index_order_by_choices
-        cast(Field, self._meta.get_field("custom_template")).choices = template_choices
         if not self.pk:
             self.index_order_by = self.index_order_by_default
 
@@ -190,9 +186,11 @@ class AratingaWebPage(AratingaPage):
     # Default is LAYOUT_STREAMBLOCKS which is the fullest editor experience.
     body = StreamField(
         COMPONENT_STREAMBLOCKS,
+        verbose_name=_("Body"),
         null=True,
         blank=True,
         use_json_field=True,
+
     )
 
     # Search fields

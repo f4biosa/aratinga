@@ -73,14 +73,6 @@ Aratinga follows a clean separation between the reusable CMS package and project
 - [GitHub](https://github.com/f4biosa/aratinga) - Source code and issue tracking
 - [Discussions](https://github.com/f4biosa/aratinga/discussions) - Community conversations
 
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## License
-
-Aratinga is open source and available under the [LICENSE](LICENSE) file.
-
 ---
 
 **Last Updated**: March 2026

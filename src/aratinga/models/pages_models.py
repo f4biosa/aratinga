@@ -299,9 +299,9 @@ class AratingaArticleIndexPage(AratingaPage):
 
     index_show_subpages_default = True
 
-    index_order_by_default = "-date_display"
+    index_order_by_default = "-last_published_at"
     index_order_by_choices = (
-        ("-date_display", "Display publish date, newest first"),
+        ("-last_published_at", _("Date first published, newest to oldest")),
     ) + AratingaWebPage.index_order_by_choices
 
     show_images = models.BooleanField(

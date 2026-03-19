@@ -1,7 +1,7 @@
 """
 Section blocks are full-width, visually prominent page sections
-(heroes, promos, featured content).  They inherit from BaseBlock
-to get the advanced settings panel (custom template, CSS class, ID).
+(heroes, promos, featured content). They inherit from BaseBlock
+to get consistent block structure and template rendering.
 """
 
 from django.utils.translation import gettext_lazy as _

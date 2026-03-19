@@ -6,9 +6,6 @@ Go deeper with Aratinga's advanced customization and deployment options.
 
 - **[Customization](customization.md)** - Create custom blocks and models
 - **[Internationalization (i18n)](internationalization.md)** - Multi-language support
-- **[Extending](extending.md)** - Hooks, signals, and plugins (coming soon)
-- **[Performance](performance.md)** - Optimization and caching (coming soon)
-- **[Deployment](deployment.md)** - Production setup and best practices (coming soon)
 
 ## Quick Links
 

@@ -217,7 +217,7 @@ Extend by adding your custom language folders.
 
 Aratinga integrates with Wagtail's content translation:
 
-```python
+````text
 # Each page can have variants per language
 # The page model supports:
 # - locale (current language version)

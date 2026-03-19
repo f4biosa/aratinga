@@ -302,4 +302,3 @@ See [Advanced Topics](../advanced/index.md) for more details.
 
 - 📄 [Page Models](../models/index.md) - Learn about page types
 - ⚙️ [Customization](../advanced/customization.md) - Create custom blocks
-- 🎨 [Themes](../advanced/extending.md) - Customize templates

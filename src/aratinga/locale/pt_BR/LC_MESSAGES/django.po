@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-04 10:29-0400\n"
-"PO-Revision-Date: 2024-11-04 11:04-0400\n"
+"PO-Revision-Date: 2026-03-19 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -239,9 +239,29 @@ msgstr "Autor"
 msgid "Quote"
 msgstr "Citação"
 
+#: src/aratinga/blocks/html_blocks.py:110
+msgid "Rich Text"
+msgstr "Texto rico"
+
+#: src/aratinga/blocks/html_blocks.py:115
+msgid "Table"
+msgstr "Tabela"
+
+#: src/aratinga/blocks/html_blocks.py:120
+msgid "HTML"
+msgstr "HTML"
+
+#: src/aratinga/blocks/html_blocks.py:145
+msgid "URL"
+msgstr "URL"
+
 #: src/aratinga/blocks/layout_blocks.py:27
 msgid "Column size"
 msgstr "Tamanho da coluna"
+
+#: src/aratinga/blocks/layout_blocks.py:35
+msgid "Column"
+msgstr "Coluna"
 
 #: src/aratinga/blocks/layout_blocks.py:44
 #: src/aratinga/blocks/layout_blocks.py:63
@@ -287,6 +307,42 @@ msgstr "Notação de cores hexadecimal, rgba ou CSS (por exemplo, #ff0011)"
 #: src/aratinga/blocks/layout_blocks.py:104
 msgid "Text color"
 msgstr "Cor do texto"
+
+#: src/aratinga/blocks/section_blocks.py:25
+msgid "Text"
+msgstr "Texto"
+
+#: src/aratinga/blocks/section_blocks.py:30
+msgid "Hero Unit"
+msgstr "Unidade Hero"
+
+#: src/aratinga/blocks/section_blocks.py:35
+msgid "Call to action label"
+msgstr "Rótulo de chamada para ação"
+
+#: src/aratinga/blocks/section_blocks.py:40
+msgid "Call to action page"
+msgstr "Página de chamada para ação"
+
+#: src/aratinga/blocks/section_blocks.py:46
+msgid "Hero"
+msgstr "Hero"
+
+#: src/aratinga/blocks/section_blocks.py:55
+msgid "Write some promotional copy"
+msgstr "Escreva um texto promocional"
+
+#: src/aratinga/blocks/section_blocks.py:60
+msgid "Promo"
+msgstr "Promo"
+
+#: src/aratinga/blocks/section_blocks.py:70
+msgid "Featured section"
+msgstr "Seção em destaque"
+
+#: src/aratinga/blocks/section_blocks.py:71
+msgid "Will display up to three child items."
+msgstr "Exibirá até três itens filhos."
 
 #: src/aratinga/forms.py:14
 msgid "Search"

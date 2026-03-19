@@ -99,7 +99,7 @@ class EmbedVideoBlock(BaseBlock):
 
     url = EmbedBlock(
         required=True,
-        label="URL",
+        label=_("URL"),
         help_text=_(
             "Link to a YouTube/Vimeo video, tweet, facebook post, etc."
         ),
@@ -257,7 +257,8 @@ class QuoteBlock(BaseBlock):
 class RichTextBlock(blocks.RichTextBlock):
     class Meta:
         template = "blocks/rich_text_block.html"
-
+        icon = "doc-full"
+        label = _("Rich Text")
 
 class TableBlock(BaseBlock):
     table = WagtailTableBlock()
@@ -265,4 +266,4 @@ class TableBlock(BaseBlock):
     class Meta:
         template = "blocks/table_block.html"
         icon = "table"
-        label = "Table"
+        label = _("Table")

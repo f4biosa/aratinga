@@ -31,7 +31,7 @@ class ColumnBlock(BaseLayoutBlock):
     class Meta:
         template = "blocks/column_block.html"
         icon = "placeholder"
-        label = "Column"
+        label = _("Column")
 
 
 class GridBlock(BaseLayoutBlock):
@@ -108,4 +108,4 @@ class HeroBlock(BaseLayoutBlock):
     class Meta:
         template = "blocks/hero_block.html"
         icon = "ara-newspaper-o"
-        label = "Hero Unit"
+        label = _("Hero Unit")

@@ -1,0 +1,42 @@
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2/
+
+version: 2
+
+# Build documentation in the docs/ directory with Sphinx
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+
+# Build documentation with Sphinx
+sphinx:
+  configuration: docs/conf.py
+  builder: html
+  fail_on_warning: false
+
+# Install dependencies from requirements.txt
+python:
+  version: 3.11
+  install:
+    - requirements: docs/requirements.txt
+
+# The name of Sphinx's source files directory
+source_directory: docs
+
+# Options for building documentation
+formats:
+  - pdf
+  - epub
+
+# Redirects for old documentation URLs (optional)
+redirects:
+  # Example: old_page: new_page.html
+  # old-api: api/index.html
+
+# Environment variables
+build_env:
+  - DJANGO_SETTINGS_MODULE=mysite.settings.dev
+
+# Webhook events
+# webhook_signing_secret: [leave blank to disable]

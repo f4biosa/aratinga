@@ -24,12 +24,14 @@ from django.shortcuts import render, get_object_or_404
 from .models.snippets_models import Template
 
 
+@login_required
+@permission_required(
+    "wagtailadmin.access_admin",
+    login_url="wagtailadmin_login",
+)
 def preview_template(request, template_id):
     template = get_object_or_404(Template, id=template_id)
-
-    # Example dynamic rendering (context can be passed dynamically from GET/POST data)
     rendered_content = template.render(context={"user_name": request.user.username})
-
     return render(request, "pages/preview_template.html", {"rendered_content": rendered_content})
 
 

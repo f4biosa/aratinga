@@ -1,12 +1,11 @@
-from threading import local
+from contextvars import ContextVar
 
-_thread_locals = local()
+_current_theme: ContextVar = ContextVar("aratinga_theme", default=None)
 
 
-def set_theme(theme):
-    setattr(_thread_locals, 'aratinga_theme', theme)
+def set_theme(theme) -> None:
+    _current_theme.set(theme)
 
 
 def get_theme():
-    theme = getattr(_thread_locals, 'aratinga_theme', None)
-    return theme
+    return _current_theme.get()

@@ -1,0 +1,288 @@
+# English translation for Aratinga CMS
+# Copyright (C) 2026 Aratinga Contributors
+# This file is distributed under the same license as the PACKAGE package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Aratinga\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-19 00:00+0000\n"
+"PO-Revision-Date: 2026-03-19 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Generated for Aratinga\n"
+
+#: src/aratinga/blocks/__init__.py:53
+#: src/aratinga/blocks/__init__.py:84
+msgid "HTML"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:102
+msgid "URL"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:104
+msgid "Link to a YouTube/Vimeo video, tweet, facebook post, etc."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:111
+msgid "Embed Media"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:35
+msgid "Button Link"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:52
+msgid "Download"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:63
+msgid "Search query"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:65
+msgid "Address or search term used to find your location on the map."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:71
+msgid "Map title"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:72
+msgid "Map title for screen readers, ex: \"Map to Goodale Park\""
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:77
+msgid "Google place ID"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:78
+msgid "Requires API key to use place ID."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:83
+msgid "Map zoom level"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:85
+msgid "Requires API key to use zoom. 1: World, 5: Landmass/continent, 10: City, 15: Streets, 20: Buildings"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:92
+msgid "Google Map"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:120
+#: src/aratinga/blocks/html_blocks.py:126
+#: src/aratinga/blocks/html_blocks.py:135
+#: src/aratinga/blocks/content_blocks.py:23
+#: src/aratinga/blocks/section_blocks.py:19
+#: src/aratinga/blocks/section_blocks.py:37
+msgid "Image"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:140
+msgid "Alternate text to show if the image doesn't load"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:146
+msgid "Image Link"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:157
+msgid "Parent page"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:159
+msgid "Show a preview of pages that are children of the selected page. Uses ordering specified in the page's LAYOUT tab."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:165
+msgid "Classified as"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:166
+msgid "Only show pages that are classified with this term."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:172
+msgid "Show body preview"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:176
+msgid "Number of pages to show"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:182
+msgid "Latest Pages"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:224
+msgid "Page to preview"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:225
+msgid "Show a mini preview of the selected page."
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:231
+msgid "Page Preview"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:242
+msgid "Quote Text"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:247
+msgid "Author"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:253
+msgid "Quote"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:261
+msgid "Rich Text"
+msgstr ""
+
+#: src/aratinga/blocks/html_blocks.py:269
+msgid "Table"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:28
+#: src/aratinga/blocks/base_blocks.py:324
+#: src/aratinga/blocks/section_blocks.py:20
+#: src/aratinga/blocks/section_blocks.py:38
+#: src/aratinga/blocks/section_blocks.py:58
+msgid "Title"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:33
+msgid "Subtitle"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:37
+msgid "Body"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:43
+msgid "Links"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:49
+msgid "Card"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:62
+msgid "Carousel"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:74
+msgid "Image Collection"
+msgstr ""
+
+#: src/aratinga/blocks/content_blocks.py:81
+msgid "Image Gallery"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:27
+msgid "Column size"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:34
+msgid "Column"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:44
+#: src/aratinga/blocks/layout_blocks.py:63
+#: src/aratinga/blocks/layout_blocks.py:80
+msgid "Full width"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:50
+msgid "Responsive Grid Row"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:69
+msgid "Card Grid"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:84
+msgid "Parallax Effect"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:86
+msgid "Background images scroll slower than foreground images, creating an illusion of depth."
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:93
+msgid "Tile background image"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:99
+msgid "Background color"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:105
+msgid "Hexadecimal, rgba, or CSS color notation (e.g. #ff0011)"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:104
+msgid "Text color"
+msgstr ""
+
+#: src/aratinga/blocks/layout_blocks.py:111
+msgid "Hero Unit"
+msgstr ""
+
+#: src/aratinga/blocks/base_blocks.py:308
+msgid "Page link"
+msgstr ""
+
+#: src/aratinga/blocks/base_blocks.py:313
+msgid "Document link"
+msgstr ""
+
+#: src/aratinga/blocks/base_blocks.py:317
+msgid "Other link"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:22
+msgid "Call to action label"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:23
+msgid "Call to action page"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:28
+msgid "Hero"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:21
+#: src/aratinga/blocks/section_blocks.py:42
+msgid "Text"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:43
+msgid "Write some promotional copy"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:49
+msgid "Promo"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:61
+#: src/aratinga/blocks/section_blocks.py:69
+msgid "Featured section"
+msgstr ""
+
+#: src/aratinga/blocks/section_blocks.py:62
+msgid "Will display up to three child items."
+msgstr ""

@@ -1,6 +1,8 @@
 from django import template
 from wagtail.models import Page, Site
 
+from aratinga.models.snippets_models import FooterText
+
 register = template.Library()
 # https://docs.djangoproject.com/en/3.2/howto/custom-template-tags/
 

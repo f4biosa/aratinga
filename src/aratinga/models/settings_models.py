@@ -86,10 +86,3 @@ class SiteSettings(GenericSettings, BaseSiteSetting):
     )
 
 
-    def __init__(self, *args, **kwargs):
-        """
-        Inject custom choices and defaults into the form fields
-        to enable customization of settings without causing migration issues.
-        """
-        super().__init__(*args, **kwargs)
-      

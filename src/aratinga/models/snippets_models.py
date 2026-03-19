@@ -17,9 +17,6 @@ from wagtail.models import Orderable
 from aratinga.blocks import HTML_STREAMBLOCKS
 from wagtail.fields import StreamField
 
-from wagtail.snippets.models import register_snippet
-from wagtail.admin.panels import FieldPanel
-
 
 @register_snippet  # Enables this model to appear as a snippet in the Wagtail admin
 class Template(models.Model):
@@ -34,14 +31,31 @@ class Template(models.Model):
         verbose_name = "Template"
         verbose_name_plural = "Templates"
 
-    # Optional method to render the template with context dynamically
     def render(self, context=None):
-        from django.template import Template as DjangoTemplate, Context
+        """
+        Render the stored template content with the given context.
 
-        django_template = DjangoTemplate(self.content)
-        if context is None:
-            context = {}
-        return django_template.render(Context(context))
+        Uses an isolated Engine with no filesystem loaders and no custom
+        tag libraries to reduce the SSTI attack surface.  Only built-in
+        Django template tags/filters are available; {% load %} and
+        {% include %} with paths are unavailable because no loaders are
+        registered.
+
+        NOTE: This feature should be restricted to superusers in the admin,
+        because even sandboxed Django templates allow calling methods on
+        model instances that happen to be in the context.
+        """
+        from django.template import Context
+        from django.template.engine import Engine
+
+        engine = Engine(
+            libraries={},
+            builtins=["django.template.defaulttags", "django.template.defaultfilters"],
+            loaders=[],  # no filesystem/app loaders — prevents {% include "path" %}
+            string_if_invalid="",
+        )
+        template = engine.from_string(self.content)
+        return template.render(Context(context or {}))
 
 
 @register_snippet
@@ -237,3 +251,35 @@ class CarouselSlide(Orderable, models.Model):
         FieldPanel("custom_id"),
         FieldPanel("content"),
     ]
+
+
+@register_snippet
+class FooterText(models.Model):
+    """
+    Stores the footer text shown site-wide.
+    Managed as a snippet so editors can update it without a deployment.
+    """
+
+    class Meta:
+        verbose_name = _("Footer Text")
+        verbose_name_plural = _("Footer Texts")
+
+    body = StreamField(
+        HTML_STREAMBLOCKS,
+        blank=True,
+        use_json_field=True,
+        verbose_name=_("Body"),
+    )
+    live = models.BooleanField(
+        default=True,
+        verbose_name=_("Live"),
+        help_text=_("Only one footer text should be live at a time."),
+    )
+
+    panels = [
+        FieldPanel("live"),
+        FieldPanel("body"),
+    ]
+
+    def __str__(self):
+        return str(_("Footer Text"))

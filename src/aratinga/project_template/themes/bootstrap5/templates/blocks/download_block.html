@@ -1,8 +1,7 @@
 {% load wagtailcore_tags aratinga_tags %}
 <a href="{{self.downloadable_file.url}}" download="{{self.downloadable_file.url}}"
   title="{{ self.alt_text|safe }}"
-  class='btn {{ self.button_style }} {{ self.button_size }} {{ self.settings.custom_css_class }}'
-  {% if self.settings.custom_id %}id="{{ self.settings.custom_id }}"{% endif %}>
+  class='btn {{ self.button_style }} {{ self.button_size }}'>
   {% if self.button_title %}
   {{ self.button_title|safe }}
   {% else %}

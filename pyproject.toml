@@ -4,13 +4,13 @@ dynamic = ["version"]
 description = "Wagtail + Voreios Extensions enabling rapid development of brasilian public educational-focused websites."
 readme = "README.md"
 license = {file = "LICENSE"}
-requires-python = ">=3.12"
+requires-python = ">=3.12, <3.15"
 authors = [
     {name = "Roraimae", email = "fabio@voreios.com.br"}
 ]
 dependencies = [
-    "Django>=5.2,<5.3",
-    "wagtail>=7.1,<7.2",
+    "Django>=5.2,<7",
+    "wagtail>=7.1,<7.4",
 ]
 
 [project.scripts]
@@ -28,6 +28,7 @@ path = "./src/aratinga/__about__.py"
 
 [dependency-groups]
 dev = [
+    "django-stubs>=5.2.9",
     "playwright>=1.56.0",
     "pytest>=8.4.2",
     "pytest-django>=4.11.1",

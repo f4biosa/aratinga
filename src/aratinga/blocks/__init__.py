@@ -9,7 +9,8 @@ from wagtail import blocks
 
 from .content_blocks import (
     CardBlock,
-    CarouselBlock
+    CarouselBlock,
+    ImageGalleryBlock,
 )
 
 from .html_blocks import (
@@ -40,7 +41,7 @@ from .section_blocks import (
 # Collections of blocks commonly used together.
 
 HTML_STREAMBLOCKS = [
-    ("text", RichTextBlock(icon="ara-font")),
+    ("text", RichTextBlock()),
     ("button", ButtonBlock()),
     ("image", ImageBlock()),
     ("image_link", ImageLinkBlock()),
@@ -49,7 +50,7 @@ HTML_STREAMBLOCKS = [
         blocks.RawHTMLBlock(
             icon="code",
             form_classname="monospace",
-            label="HTML",
+            label=_("HTML"),
         ),
     ),
     ("download", DownloadBlock()),
@@ -64,6 +65,7 @@ HTML_STREAMBLOCKS = [
 CONTENT_STREAMBLOCKS = HTML_STREAMBLOCKS + [
     ("card", CardBlock()),
     ("carousel", CarouselBlock()),
+    ("image_gallery", ImageGalleryBlock()),
 ]
 
 LAYOUT_STREAMBLOCKS = [
@@ -79,7 +81,7 @@ LAYOUT_STREAMBLOCKS = [
     (
         "html",
         blocks.RawHTMLBlock(
-            icon="code", form_classname="monospace", label="HTML"
+            icon="code", form_classname="monospace", label=_("HTML")
         ),
     ),
 ]
@@ -90,7 +92,4 @@ SECTION_STREAMBLOCKS = [
     ("featured_section", FeaturedSectionBlock()),
 ]
 
-COMPONENT_STREAMBLOCKS = [
-    ("content", blocks.StreamBlock(CONTENT_STREAMBLOCKS)),
-    ("section", blocks.StreamBlock(SECTION_STREAMBLOCKS)),
-]
+COMPONENT_STREAMBLOCKS = CONTENT_STREAMBLOCKS + SECTION_STREAMBLOCKS

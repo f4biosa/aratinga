@@ -44,9 +44,10 @@ class CardBlock(BaseBlock):
     )
 
     class Meta:
-        template = "blocks/card_foot.html"
-        icon = "ara-list-alt"
+        icon = "image"
         label = _("Card")
+        group=_("Content")
+        template = "blocks/card_foot.html"
 
 
 class CarouselBlock(BaseBlock):
@@ -59,6 +60,7 @@ class CarouselBlock(BaseBlock):
     class Meta:
         icon = "image"
         label = _("Carousel")
+        group=_("Content")
         template = "blocks/carousel_block.html"
 
 
@@ -77,3 +79,4 @@ class ImageGalleryBlock(BaseBlock):
         template = "blocks/image_gallery_block.html"
         icon = "image"
         label = _("Image Gallery")
+        group = _("Content")

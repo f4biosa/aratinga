@@ -1,74 +1,69 @@
-from django.db import models
-from wagtail.blocks import (
-    CharBlock,
-    ChoiceBlock,
-    RichTextBlock,
-    StructBlock,
-    TextBlock,
-    IntegerBlock,
-    PageChooserBlock
-)
+"""
+Section blocks are full-width, visually prominent page sections
+(heroes, promos, featured content). They inherit from BaseBlock
+to get consistent block structure and template rendering.
+"""
+
 from django.utils.translation import gettext_lazy as _
+from wagtail.blocks import CharBlock, PageChooserBlock, RichTextBlock
 from wagtail.images.blocks import ImageChooserBlock
 
-class HeroBlock(StructBlock):
+from .base_blocks import BaseBlock
 
-    # Hero section of HomePage
-    image = ImageChooserBlock(required=True)
-    title = CharBlock(required=False)
-    text = CharBlock(required=False)
-    cta =CharBlock(required=False)
-    cta_link = PageChooserBlock(required=False)
+
+class HeroBlock(BaseBlock):
+    """
+    Full-width hero banner with an image, title, body text, and a CTA link.
+    """
+
+    image = ImageChooserBlock(required=True, label=_("Image"))
+    title = CharBlock(required=False, label=_("Title"))
+    text = CharBlock(required=False, label=_("Text"))
+    cta = CharBlock(required=False, label=_("Call to action label"))
+    cta_link = PageChooserBlock(required=False, label=_("Call to action page"))
 
     class Meta:
         icon = "image"
         template = "section/hero_block.html"
-        preview_value = {"attribution": "The Wagtail Bakery"}
-        description = _("An image with optional caption and attribution")
+        label = _("Hero")
+        group=_("Section")
 
-class PromoBlock(StructBlock):
-    # Promo section of the HomePage
-    image = ImageChooserBlock(required=True)
-    title = CharBlock(required=False)
+
+class PromoBlock(BaseBlock):
+    """
+    Promotional section with an image and rich-text body.
+    """
+
+    image = ImageChooserBlock(required=True, label=_("Image"))
+    title = CharBlock(required=False, label=_("Title"))
     text = RichTextBlock(
-        required=False, help_text="Write some promotional copy"
+        required=False,
+        label=_("Text"),
+        help_text=_("Write some promotional copy"),
     )
 
     class Meta:
         icon = "image"
         template = "section/promo_block.html"
-        preview_value = {"attribution": "The Wagtail Bakery"}
-        description = "An image with optional caption and attribution"
+        label = _("Promo")
+        group=_("Section")
 
 
-class ForeignKeyBlock(StructBlock):
-    page_object_id = IntegerBlock(required=True)
+class FeaturedSectionBlock(BaseBlock):
+    """
+    Highlights a section of the site by linking to a parent page and
+    displaying up to three of its children.
+    """
 
-    def get_related_object(self, value):
-        return Page.objects.get(id=value["page_id"])
-
-
-class FeaturedSectionBlock(StructBlock):
-    # Featured sections on the HomePage
-    # You will see on templates/base/home_page.html that these are treated
-    # in different ways, and displayed in different areas of the page.
-    # Each list their children items that we access via the children function
-    # that we define on the individual Page models e.g. BlogIndexPage
-    title = CharBlock(required=False)
+    title = CharBlock(required=False, label=_("Title"))
     section = PageChooserBlock(
-        "wagtailcore.Page",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-        verbose_name="Seção em destaque",
-        required=False, 
-        help_text=_("Featured section for the homepage. Will display up to three child items.")
-        )
-    
+        required=False,
+        label=_("Featured section"),
+        help_text=_("Will display up to three child items."),
+    )
 
     class Meta:
         icon = "image"
         template = "section/featured_section_block.html"
-        preview_value = {"attribution": "The Wagtail Bakery"}
-        description = _("An image with optional caption and attribution")
+        label = _("Featured section")
+        group=_("Section")
